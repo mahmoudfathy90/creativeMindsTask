@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="title_color">#838383</color>
+    <color name="second_color">#cbcbcb</color>
+    <color name="oval_color">#fd8b25</color>
+    <color name="cancel_color">#a22388</color>
+    <color name="tapbar_color">#f1f2ec</color>
+    <color name="tapbar_text_color">#c7c7c6</color>
+    <color name="white">#fff</color>
+
+</resources>

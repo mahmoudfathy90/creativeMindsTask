@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+
+
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':domain')
+    kapt 'com.google.auto.value:auto-value:1.5.2'
+
+    implementation dataDependencies.javaxAnnotation
+
+    implementation dataDependencies.kotlin
+    implementation dataDependencies.gson
+    implementation dataDependencies.javaxInject
+    implementation dataDependencies.rxKotlin
+    implementation dataDependencies.rxLocation
+    implementation dataDependencies.locations
+
+
+
+
+    testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.kotlinJUnit
+    testImplementation dataTestDependencies.mockito
+    testImplementation dataTestDependencies.assertj
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+}
+repositories {
+    mavenCentral()
+}

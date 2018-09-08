@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_half">@dimen/_9sdp</dimen>
+    <dimen name="margin_four">@dimen/_4sdp</dimen>
+
+    <dimen name="margin_standard">@dimen/_18sdp</dimen>
+    <dimen name="margin_standard_double">@dimen/_32sdp</dimen>
+    <dimen name="margin_standard_forty_sex">@dimen/_46sdp</dimen>
+    <dimen name="margin_standard_two_double">@dimen/_64sdp</dimen>
+
+</resources>

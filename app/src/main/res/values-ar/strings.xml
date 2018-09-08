@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">creative</string>
+    <string name="go_by_car">ابر اروح الهايبر</string>
+    <string name="from_hour">منذو ساعة</string>
+    <string name="type">رجال</string>
+    <string name="cancel">الغاء</string>
+    <string name="myneeds">فزعاتى</string>
+    <string name="others">الاخرين</string>
+
+
+
+    <string name="wait">قيد الانتظار</string>
+    <string name="accepted">تم القبول</string>
+    <string name="canceled">تك الالغاء</string>
+
+</resources>

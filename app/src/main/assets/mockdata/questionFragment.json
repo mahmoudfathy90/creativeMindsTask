@@ -1,0 +1,58 @@
+{
+  "question": [
+    {
+      "id": 1,
+      "type": 1,
+      "questionAr": "هل انت مدخن ؟",
+      "questionEn": "Are you smoker ?",
+      "yesBtAr": "نعم",
+      "yesBtEn": "yes",
+      "noBtEn": "no",
+      "noBtAr": "لا"
+    },
+    {
+      "id": 2,
+      "type": 1,
+      "questionAr": "هل قمت بزيارة الطبيب خلال الفترة السابقة ؟",
+      "questionEn": "did you visit doctor ?",
+      "yesBtAr": "نعم , قمت بزيارته",
+      "yesBtEn": "yes , I did",
+      "noBtEn": "no , I didn't",
+      "noBtAr": "لا , لم لم اذهب"
+    },
+    {
+      "id": 3,
+      "type": 1,
+      "questionAr": "تاريخ ارتفاع ضغط الدم ؟",
+      "questionEn": "blood pressure increase history ?",
+      "yesBtAr": "نعم",
+      "yesBtEn": "yes",
+      "noBtEn": "no",
+      "noBtAr": "لا"
+    },
+    {
+      "id": 4,
+      "type": 2,
+      "questionAr": "ادخل طولك ؟",
+      "questionEn": "Enter your height ?",
+      "hintAr": "000 سم",
+      "hintEn": "000 cm"
+    },
+    {
+      "id": 5,
+      "type": 3,
+      "questionAr": "اختر المدينة ؟",
+      "questionEn": "Select city ?",
+      "hintAr": "اسم المدينة",
+      "hintEn": "city name"
+    },
+    {
+      "id": 6,
+      "type": 3,
+      "questionAr": "اختر المحافظة ؟",
+      "questionEn": "Select government?",
+      "hintAr": "اسم المحافظة",
+      "hintEn": "Gover name"
+    }
+  ]
+}

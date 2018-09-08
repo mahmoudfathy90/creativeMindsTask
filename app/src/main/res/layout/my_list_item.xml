@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="model"
+        type="com.creativeapp.ui.designtask.myfragment.List_Model"/>
+</data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_standard"
+            android:src="@drawable/type_car"
+            app:civ_border_color="#00000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_four"
+            android:layout_marginEnd="@dimen/margin_half"
+            tools:text="@string/go_by_car"
+            android:text="@{model.title}"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/_14ssp"
+
+            app:layout_constraintEnd_toStartOf="@id/oval"
+            app:layout_constraintHorizontal_bias=".0"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="@+id/image"
+
+
+            />
+
+        <ImageView
+            android:id="@+id/oval"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/margin_half"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:src="@drawable/oval_background"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toTopOf="@+id/image" />
+
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginEnd="@dimen/margin_half"
+            android:layout_marginBottom="@dimen/margin_four"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintStart_toEndOf="@id/image">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/my_list_help_accepted_accept"
+                android:drawablePadding="@dimen/margin_four"
+                tools:text="@string/from_hour"
+                android:text="@{model.time}"
+                android:textColor="@color/second_color"
+                android:textSize="@dimen/_9ssp" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_four"
+                android:drawableStart="@drawable/my_list_help_accepted_info_attendance"
+                android:drawablePadding="@dimen/margin_four"
+                tools:text="@string/type"
+                android:text="@{model.sex}"
+
+                android:textColor="@color/second_color"
+                android:textSize="@dimen/_9ssp" />
+
+            <TextView
+                android:id="@+id/acceptedInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_four"
+                android:drawableStart="@drawable/my_list_help_accepted_info_help_type"
+                android:drawablePadding="@dimen/margin_four"
+                tools:text="@string/type"
+                android:text="@{model.type}"
+
+
+                android:textColor="@color/second_color"
+                android:textSize="@dimen/_9ssp" />
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_four"
+                android:drawableStart="@drawable/my_list_help_accepted_accept"
+                android:drawablePadding="@dimen/margin_four"
+                tools:text="@string/type"
+                android:text="@{model.number}"
+
+
+                android:textColor="@color/second_color"
+                android:textSize="@dimen/_9ssp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_four"
+            android:layout_marginTop="@dimen/margin_half"
+
+            android:background="@drawable/cancel_background"
+            android:paddingStart="@dimen/margin_standard"
+            android:paddingTop="@dimen/margin_four"
+            android:paddingEnd="@dimen/margin_standard"
+            android:paddingBottom="@dimen/margin_four"
+            android:text="@string/cancel"
+            android:textColor="@color/cancel_color"
+            android:textSize="@dimen/_9ssp"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@+id/container"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_half"
+            android:background="@color/tapbar_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cancel" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
