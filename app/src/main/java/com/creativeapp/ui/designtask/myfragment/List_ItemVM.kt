@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.TextView
 import com.creative.domain.model.List_Domain
 import com.creativeapp.R
 import com.creativeapp.ui.base.activity.ListCallback
@@ -26,6 +27,7 @@ class List_ItemVM : FullListVM<List_Domain, List_Model, List_ItemVM.MyListCallBa
 
     interface MyListCallBack : ListCallback {
         fun onItemSelected(t: List_Model)
+        fun getPageNumber(): Int
     }
 
     override fun hasLoadMore(): Boolean = false
@@ -41,6 +43,13 @@ class List_ItemVM : FullListVM<List_Domain, List_Model, List_ItemVM.MyListCallBa
 
     override fun onBindView(root: View?, position: Int) {
         super.onBindView(root, position)
+        var cancel = root!!.findViewById<TextView>(R.id.cancel)
+        if (listCallback.getPageNumber() == 2) {
+
+            cancel.visibility = View.GONE
+        } else {
+            cancel.visibility = View.VISIBLE
+        }
         root?.setOnClickListener {
             listCallback.onItemSelected(getListOp().getList()?.get(position)!!)
         }

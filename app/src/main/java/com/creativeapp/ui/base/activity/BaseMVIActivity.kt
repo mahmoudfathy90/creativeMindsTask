@@ -14,6 +14,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.creativeapp.R
 import com.creativeapp.application.MyApplication
 import com.creativeapp.ui.base.fragment.BaseFragment
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 open abstract class BaseMVIActivity<V,P> : MviActivity<V, P>(), BaseFragment.IActivity where V:MvpView, P:MviPresenter<V,*>{
     override fun createPresenter(): P{
@@ -61,8 +62,8 @@ open abstract class BaseMVIActivity<V,P> : MviActivity<V, P>(), BaseFragment.IAc
 
     override fun attachBaseContext(newBase: Context?) {
         injectorAll.attach(newBase!!)
-        super.attachBaseContext(newBase)
-      //  super.attachBaseContext(CalligraphyContextWrapper.wrap(injectorAll.languageModule.attach(newBase)))
+
+       super.attachBaseContext(CalligraphyContextWrapper.wrap(injectorAll.languageModule.attach(newBase)))
     }
 
     override fun getMvpDelegate(): ActivityMviDelegate<V, P> {

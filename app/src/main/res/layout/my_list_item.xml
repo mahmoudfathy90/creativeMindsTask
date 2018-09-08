@@ -17,7 +17,7 @@
             android:layout_width="@dimen/_65sdp"
             android:layout_height="@dimen/_65sdp"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/margin_standard"
+            android:layout_margin="@dimen/margin_four"
             android:src="@drawable/type_car"
             app:civ_border_color="#00000000"
             app:civ_border_width="2dp"
@@ -26,12 +26,12 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_four"
             android:layout_marginEnd="@dimen/margin_half"
-            tools:text="@string/go_by_car"
+            tools:text="hfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfhfhhf"
             android:text="@{model.title}"
             android:textColor="@color/title_color"
             android:textSize="@dimen/_14ssp"
@@ -46,13 +46,12 @@
 
         <ImageView
             android:id="@+id/oval"
-            android:layout_width="@dimen/_10sdp"
-            android:layout_height="@dimen/_10sdp"
+            android:layout_width="@dimen/_7sdp"
+            android:layout_height="@dimen/_7sdp"
             android:layout_marginTop="@dimen/margin_half"
-            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_four"
             android:src="@drawable/oval_background"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintTop_toTopOf="@+id/image" />
 
 
@@ -71,7 +70,7 @@
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/my_list_help_accepted_accept"
+                android:drawableStart="@drawable/my_list_help_accepted_time"
                 android:drawablePadding="@dimen/margin_four"
                 tools:text="@string/from_hour"
                 android:text="@{model.time}"
@@ -100,7 +99,6 @@
                 android:drawablePadding="@dimen/margin_four"
                 tools:text="@string/type"
                 android:text="@{model.type}"
-
 
                 android:textColor="@color/second_color"
                 android:textSize="@dimen/_9ssp" />

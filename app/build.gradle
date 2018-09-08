@@ -134,6 +134,7 @@ dependencies {
     implementation mobileUiDependencies.ssp
     implementation mobileUiDependencies.sdp
     implementation mobileUiDependencies.nineOldAndroid
+    implementation mobileUiDependencies.calligraphy
     implementation mobileUiDependencies.slider
     implementation mobileUiDependencies.circleimageview
     implementation mobileUiDependencies.relay
