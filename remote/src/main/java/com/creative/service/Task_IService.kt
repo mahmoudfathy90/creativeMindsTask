@@ -15,7 +15,7 @@ interface Task_IService {
 //    fun addDrug(drug_EntryEntity: Drug_EntryEntity): Observable<Response<Drug_EntryEntity>>
 
     @GET
-fun getAllRepo(pageIndex:Int)
+    fun getAllRepo(pageIndex: Int)
 
 
 }
