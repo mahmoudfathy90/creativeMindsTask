@@ -1,5 +1,6 @@
 package com.creative.service
 
+import com.creative.Entity.Repo_Entity
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -14,8 +15,8 @@ interface Task_IService {
 //    @POST("")
 //    fun addDrug(drug_EntryEntity: Drug_EntryEntity): Observable<Response<Drug_EntryEntity>>
 
-    @GET
-    fun getAllRepo(pageIndex: Int)
+    @GET("https://api.github.com/users/square/repos")
+    fun getAllRepo(@Query("page") pageIndex: Int) :Observable<Response<List<Repo_Entity>>>
 
 
 }

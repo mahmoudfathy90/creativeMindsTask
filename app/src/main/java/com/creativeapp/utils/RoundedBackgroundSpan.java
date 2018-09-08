@@ -18,8 +18,8 @@ public class RoundedBackgroundSpan extends ReplacementSpan {
     public RoundedBackgroundSpan(Context context,float cornerRadius) {
         super();
         this.cornerRadius=cornerRadius;
-        backgroundColor = context.getResources().getColor(R.color.carbon_white);
-        textColor = context.getResources().getColor(R.color.carbon_white);
+        backgroundColor = context.getResources().getColor(R.color.white);
+        textColor = context.getResources().getColor(R.color.white);
     }
 
     @Override
@@ -31,7 +31,6 @@ public class RoundedBackgroundSpan extends ReplacementSpan {
         paint.setColor(textColor);
         canvas.drawText(text, start, end, x, y, paint);
     }
-
     @Override
     public int getSize(Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
         return Math.round(paint.measureText(text, start, end));

@@ -12,6 +12,8 @@
 
     <string name="wait">قيد الانتظار</string>
     <string name="accepted">تم القبول</string>
-    <string name="canceled">تك الالغاء</string>
+    <string name="canceled">تم الالغاء</string>
+    <string name="design_task">Design task</string>
+    <string name="repo_task">Repo task</string>
 
 </resources>

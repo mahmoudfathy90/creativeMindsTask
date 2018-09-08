@@ -13,19 +13,22 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
-        android:name="com.creativeapp.application.MyApplication"
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".ui.base.activity.StartActivity" />
-        <activity android:name=".ui.designtask.MyListActivty" >
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <action android:name="android.intent.action.VIEW" />
+        <activity android:name=".ui.designtask.MyListActivty">
 
-            <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
+        <activity android:name=".ui.repoTask.RepoActivity" />
+        <activity android:name=".ui.SplahActivty">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

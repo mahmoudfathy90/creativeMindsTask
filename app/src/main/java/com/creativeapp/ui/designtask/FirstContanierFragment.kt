@@ -32,7 +32,6 @@ class FirstContanierFragment : SBaseFragment() {
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         return binding.root
 
-
     }
 
 
