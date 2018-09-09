@@ -79,7 +79,7 @@ open abstract class BaseMVIActivity<V,P> : MviActivity<V, P>(), BaseFragment.IAc
 
     fun replaceFramgment(fragment: Fragment, id:Int){
         var theFragment = supportFragmentManager.findFragmentByTag(fragment::class.java.name)
-        if (theFragment == null)
+        //if (theFragment == null)
             supportFragmentManager.beginTransaction().replace(id,fragment,fragment::class.java.name).commit()
     }
     fun replaceFramgmentWithSave(fragment: Fragment, id:Int){

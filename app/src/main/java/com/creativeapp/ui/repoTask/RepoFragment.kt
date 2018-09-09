@@ -26,6 +26,12 @@ import com.creative.domain.model.Repo_Domain
 
 class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
         Repo_ItemVM.MyListCallBack, IListListenerSetter {
+    override fun getswipe(): SwipeRefreshLayout {
+        var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
+
+        return swipeRefreshLayout
+    }
+
     override fun acceptRepo(page: Int, num: Int) {
         listRelay.accept(Pair(page, num))
     }
@@ -36,14 +42,15 @@ class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
     }
 
     val listRelay: PublishRelay<Pair<Int, Int>> = PublishRelay.create()
-var list:List<Repo_Domain> =ArrayList<Repo_Domain>()
+    var list: List<Repo_Domain> = ArrayList<Repo_Domain>()
 
     override fun renderResult(baseVS: BaseVS) {
         when (baseVS) {
             is Repo_result -> {
-                var swipeRefreshLayout= view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
-                swipeRefreshLayout.isRefreshing=false
-                list=baseVS.repo
+                var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
+                swipeRefreshLayout.isRefreshing = false
+                swipeRefreshLayout.isEnabled = false
+                list = baseVS.repo
                 listHolder?.operation?.addList(baseVS.repo)
             }
         }
@@ -57,8 +64,8 @@ var list:List<Repo_Domain> =ArrayList<Repo_Domain>()
         var repo = dialog.findViewById<Button>(R.id.repo)
         var owner = dialog.findViewById<Button>(R.id.owner)
         repo.setOnClickListener {
-            if (t.htmlUrl != null) {
-                val url = t.htmlUrl
+            if (t.html_url != null) {
+                val url = t.html_url
                 val i = Intent(Intent.ACTION_VIEW)
                 i.data = Uri.parse(url)
                 startActivity(i)
@@ -66,8 +73,8 @@ var list:List<Repo_Domain> =ArrayList<Repo_Domain>()
             dialog.dismiss()
         }
         owner.setOnClickListener {
-            if (t.owner?.htmlUrl != null) {
-                val url = t.owner?.htmlUrl
+            if (t.owner?.html_url != null) {
+                val url = t.owner?.html_url
                 val i = Intent(Intent.ACTION_VIEW)
                 i.data = Uri.parse(url)
                 startActivity(i)

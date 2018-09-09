@@ -16,7 +16,7 @@ class Repo_Model : Serializable {
 
         var private: Boolean? = null
 
-        var htmlUrl: String? = null
+        var html_url: String? = null
 
         var description: String? = null
 
@@ -165,7 +165,7 @@ class Repo_Model : Serializable {
 
                 var url: String? = null
 
-                var htmlUrl: String? = null
+                var html_url: String? = null
 
                 var followersUrl: String? = null
 

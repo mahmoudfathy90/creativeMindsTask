@@ -27,7 +27,7 @@ class Repo_Entity : Serializable {
         var private: Boolean? = null
         @SerializedName("html_url")
         @Expose
-        var htmlUrl: String? = null
+        var html_url: String? = null
         @SerializedName("description")
         @Expose
         var description: String? = null
@@ -247,7 +247,7 @@ class Repo_Entity : Serializable {
                 var url: String? = null
                 @SerializedName("html_url")
                 @Expose
-                var htmlUrl: String? = null
+                var html_url: String? = null
                 @SerializedName("followers_url")
                 @Expose
                 var followersUrl: String? = null

@@ -3,6 +3,7 @@ package com.creativeapp.ui.designtask.myfragment
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import com.creative.domain.model.List_Domain
 import com.creative.domain.state.BaseVS
 import com.creative.domain.state.List_result
@@ -24,7 +25,7 @@ class MyList_Fragment : FragmentList<My_List_Presenter, MyList_View>(), MyList_V
     }
 
 
-    var tabnumber: Int = 1
+    var tabnumber: Int = 0
     var radionumber: Int = 1
 
     companion object {
@@ -42,6 +43,9 @@ class MyList_Fragment : FragmentList<My_List_Presenter, MyList_View>(), MyList_V
     override fun renderResult(baseVS: BaseVS) {
         when (baseVS) {
             is List_result -> {
+                var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
+                swipeRefreshLayout.isRefreshing = false
+                swipeRefreshLayout.isEnabled = false
                 var bundle: Bundle = this!!.arguments!!
                 var mylist: MutableList<List_Domain> = ArrayList<List_Domain>()
                 tabnumber = bundle.getInt("tabnumber",0)
@@ -66,20 +70,20 @@ class MyList_Fragment : FragmentList<My_List_Presenter, MyList_View>(), MyList_V
                         }
                     }
                 }
-                else{
+                else if (radionumber == 2){
                     when (tabnumber) {
-                        2 -> {
-                            for (n in 0..1) {
-                                mylist.add(baseVS.items[n])
-                            }
-                        }
                         0 -> {
-                            for (n in 2..3) {
+                            for (n in 2..5) {
                                 mylist.add(baseVS.items[n])
                             }
                         }
                         1 -> {
-                            for (n in 4..5) {
+                            for (n in 1..3) {
+                                mylist.add(baseVS.items[n])
+                            }
+                        }
+                       2 -> {
+                            for (n in 3..5) {
                                 mylist.add(baseVS.items[n])
                             }
                         }

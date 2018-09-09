@@ -1,6 +1,7 @@
 package com.creativeapp.ui.repoTask
 
 import android.content.Context
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -22,7 +23,6 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
         return gson.fromJson(gson.toJson(it), Repo_Model::class.java)
     }
 
-
     override fun getViewId(type: Int): Int = R.layout.repo_list_item
 
 
@@ -32,7 +32,8 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
 
     interface MyListCallBack : ListCallback {
         fun onItemSelected(t: Repo_Model)
-        fun acceptRepo(page:Int,num:Int)
+        fun getswipe(): SwipeRefreshLayout
+        fun acceptRepo(page: Int, num: Int)
     }
 
     override fun hasLoadMore(): Boolean = true
@@ -43,7 +44,9 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
 
     override fun fetchData() {
         super.fetchData()
-        listCallback.acceptRepo(0,10)
+        listCallback.acceptRepo(0, 10)
+        listCallback.getswipe().isRefreshing = true
+        listCallback.getswipe().isEnabled = true
     }
 
     override fun onBindView(root: View?, position: Int) {
@@ -54,14 +57,12 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
             root!!.setBackgroundColor(root.context.resources.getColor(R.color.white))
         }
 
-        root?.setOnClickListener {
+        root?.setOnLongClickListener {
             listCallback.onItemSelected(getListOp().getList()?.get(position)!!)
+            return@setOnLongClickListener true
         }
-
-        }
-
-
-
-
 
     }
+
+
+}

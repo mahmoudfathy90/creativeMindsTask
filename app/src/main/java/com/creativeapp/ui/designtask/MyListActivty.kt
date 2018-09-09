@@ -15,28 +15,29 @@ class MyListActivty : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_my_list_activty)
 
-        binding.back
-
+        binding.back.setOnClickListener{
+            onBackPressed()
+        }
+        binding.needs.isChecked=true
         setGroupConatiner()
-
     }
 
     fun setGroupConatiner(){
-       replaceFramgment(FirstContanierFragment.newInstance(1),binding.fragmentContainer.id)
+       replaceFramgment(FirstContanierFragment(),binding.fragmentContainer.id)
         binding.groupContainer.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId) {
                 R.id.needs -> {
                     binding.needs.setBackgroundResource(R.drawable.radio_selected)
                     binding.others.setBackgroundColor(
                             resources.getColor(android.R.color.transparent))
-                    replaceFramgment(FirstContanierFragment.newInstance(1), binding.fragmentContainer.id)
+                    replaceFramgment(FirstContanierFragment(), binding.fragmentContainer.id)
                 }
                 R.id.others -> {
                     binding.others.setBackgroundResource(R.drawable.radio_selected)
                     binding.needs.setBackgroundColor(
                             resources.getColor(android.R.color.transparent))
 
-                    replaceFramgment(FirstContanierFragment.newInstance(2), binding.fragmentContainer.id)
+                    replaceFramgment(SecondContainerFragment(), binding.fragmentContainer.id)
                 }
             }
         }
