@@ -5,10 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import com.creative.domain.state.BaseVS
-import com.creative.domain.state.List_result
 import com.creative.domain.state.Repo_result
 import com.creativeapp.R
-import com.creativeapp.ui.base.activity.ActivityList
 import com.creativeapp.ui.base.fragment.FragmentList
 import com.creativeapp.ui.base.fragment.IListItemSelected
 import com.creativeapp.ui.base.fragment.IListListenerSetter
@@ -21,11 +19,15 @@ import javax.inject.Inject
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
 import android.support.v4.widget.SwipeRefreshLayout
+import android.view.View
 import com.creative.domain.model.Repo_Domain
+import kotlinx.android.synthetic.main.list_container.*
 
 
 class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
         Repo_ItemVM.MyListCallBack, IListListenerSetter {
+     lateinit var swipeRefreshLayout :SwipeRefreshLayout
+
     override fun getswipe(): SwipeRefreshLayout {
         var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
 
@@ -47,7 +49,6 @@ class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
     override fun renderResult(baseVS: BaseVS) {
         when (baseVS) {
             is Repo_result -> {
-                var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
                 swipeRefreshLayout.isRefreshing = false
                 swipeRefreshLayout.isEnabled = false
                 list = baseVS.repo
@@ -118,5 +119,19 @@ class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
         getApplicationCompoent().inject(this)
         super.onCreate(savedInstanceState)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        swipeRefreshLayout= view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
+        swipeRefreshLayout.setOnRefreshListener {
+            swiprefresh.isEnabled=true
+            swiprefresh.isRefreshing=true
+        listRelay.accept(Pair(0, 10))
+        }
+    }
+
+
+
+
 
 }

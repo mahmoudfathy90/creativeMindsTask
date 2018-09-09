@@ -24,12 +24,8 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
     }
 
     override fun getViewId(type: Int): Int = R.layout.repo_list_item
-
-
     override fun onViewSnapped(view: View, position: Int) {
     }
-
-
     interface MyListCallBack : ListCallback {
         fun onItemSelected(t: Repo_Model)
         fun getswipe(): SwipeRefreshLayout
@@ -41,13 +37,14 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
     override fun getLayoutManager(context: Context): RecyclerView.LayoutManager {
         return LinearLayoutManager(context)
     }
-
     override fun fetchData() {
         super.fetchData()
         listCallback.acceptRepo(0, 10)
         listCallback.getswipe().isRefreshing = true
-        listCallback.getswipe().isEnabled = true
+
     }
+
+
 
     override fun onBindView(root: View?, position: Int) {
         super.onBindView(root, position)
