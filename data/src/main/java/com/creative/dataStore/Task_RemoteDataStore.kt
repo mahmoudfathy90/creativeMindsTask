@@ -8,7 +8,7 @@ import io.reactivex.Observable
 
 import javax.inject.Inject
 class Task_RemoteDataStore @Inject constructor(private var task_IRemote: Task_IRemote) : Task_IDataStore {
-    override fun getAllRepo(pageIndex: Int): Observable<List<Repo_Entity>> =task_IRemote.getAllRepo(pageIndex)
+    override fun getAllRepo(pageIndex: Int,num:Int): Observable<List<Repo_Entity>> =task_IRemote.getAllRepo(pageIndex,num)
 
 }
 

@@ -5,7 +5,8 @@ import android.os.Bundle
 import com.creativeapp.R
 import com.creativeapp.ui.base.activity.BaseActivity
 import com.creativeapp.ui.designtask.MyListActivty
-import com.creativeapp.ui.repoTask.RepoActivity
+import com.creativeapp.ui.repoTask.RepoFragment
+import com.creativeapp.ui.repoTask.ReposityTaskActivty
 import kotlinx.android.synthetic.main.activity_splah_activty.*
 
 class SplahActivty : BaseActivity() {
@@ -14,7 +15,7 @@ class SplahActivty : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splah_activty)
         repoTask.setOnClickListener {
-            startActivity(Intent(this,RepoActivity::class.java))
+            startActivity(Intent(this, ReposityTaskActivty::class.java))
         }
         designTask.setOnClickListener {
             startActivity(Intent(this,MyListActivty::class.java))

@@ -9,6 +9,6 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class Task_CachDataStore @Inject constructor(private var task_ICach: Task_ICach) : Task_IDataStore {
-    override fun getAllRepo(pageIndex: Int): Observable<List<Repo_Entity>> =task_ICach.getAllRepo(pageIndex)
+    override fun getAllRepo(pageIndex: Int,num:Int): Observable<List<Repo_Entity>> =task_ICach.getAllRepo(pageIndex,num)
 
 }

@@ -5,6 +5,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swiprefresh"
+        >
+
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -12,7 +18,9 @@
             android:fillViewport="true"
             android:orientation="vertical">
         </FrameLayout>
-    </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>
 
 
 

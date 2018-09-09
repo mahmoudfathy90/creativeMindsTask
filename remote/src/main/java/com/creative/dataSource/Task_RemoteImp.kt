@@ -18,8 +18,9 @@ import javax.inject.Inject
 class Task_RemoteImp @Inject constructor(
         var task_IService: Task_IService
 ) : Task_IRemote {
-    override fun getAllRepo(pageIndex: Int): Observable<List<Repo_Entity>> {
-        return task_IService.getAllRepo(pageIndex)
+
+    override fun getAllRepo(pageIndex: Int,num:Int): Observable<List<Repo_Entity>> {
+        return task_IService.getAllRepo(pageIndex,num)
                 .map {
                     if (it.isSuccessful){
                             it.body()!!

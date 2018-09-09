@@ -61,7 +61,7 @@ abstract class ActivityList<P, V> : BaseMVIActivity<V, P>(), ActivityList_View, 
         return 1
     }
 
-    abstract override fun getScreenTitle(): String
+   // abstract override fun getScreenTitle(): String
 
     override fun render(baseVS: BaseVS) {
         when (baseVS) {

@@ -1,5 +1,6 @@
 package com.creative.repository
 
+import com.creative.dataSourse.Task_IRemote
 import com.creative.dataStore.Task_DataStoreFactory
 import com.creative.domain.model.List_Domain
 import com.creative.domain.model.Repo_Domain
@@ -13,12 +14,16 @@ import javax.inject.Inject
 
 class Task_Repository @Inject constructor(var task_DataStoreFactory: Task_DataStoreFactory, var gson: Gson,
                                           var assetModule: AssetModule,
-                                          var repomapper: Repo_Mapper
+                                          var repomapper: Repo_Mapper,
+                                          private var task_IRemote: Task_IRemote
+
 ) : Task_IRepository {
-    override fun getAllRepo(pageIndex: Int): Observable<List<Repo_Domain>> {
-        return task_DataStoreFactory.retrieveRemoteDataStore().getAllRepo(pageIndex).map {
-            repomapper.mapListFromEntity(it)
+    override fun getAllRepo(pageIndex: Int,num:Int): Observable<List<Repo_Domain>> {
+        return task_IRemote.getAllRepo(pageIndex,num).map {
+            gson.fromJson(gson.toJson(it), Array<Repo_Domain>::class.java).toList()
         }
+
+
     }
 
     override fun getMyList(pageIndex: Int): Observable<List<List_Domain>> {

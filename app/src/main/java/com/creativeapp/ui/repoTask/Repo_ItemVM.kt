@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.AdapterView
 import com.creative.domain.model.List_Domain
 import com.creative.domain.model.RepoOwner_domain
 import com.creative.domain.model.Repo_Domain
@@ -17,16 +18,8 @@ import com.trippl3dev.listlibrary.implementation.FullListVM
 
 class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBack>() {
     override fun mapFrom(it: Repo_Domain): Repo_Model {
-        return Repo_Model(it.name,it.description,it.html_url,mapOwner(it.owner!!),it.fork)
-    }
-
-
-
-
-    fun mapOwner(it:List<RepoOwner_domain>):List<RepoOwner_Model>{
-        var gson:Gson= Gson()
-        return gson.fromJson(gson.toJson(it), Array<RepoOwner_Model>::class.java).toList()
-
+        var gson: Gson = Gson()
+        return gson.fromJson(gson.toJson(it), Repo_Model::class.java)
     }
 
 
@@ -39,7 +32,9 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
 
     interface MyListCallBack : ListCallback {
         fun onItemSelected(t: Repo_Model)
+        fun acceptRepo(page:Int,num:Int)
     }
+
     override fun hasLoadMore(): Boolean = true
 
     override fun getLayoutManager(context: Context): RecyclerView.LayoutManager {
@@ -48,15 +43,25 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
 
     override fun fetchData() {
         super.fetchData()
-        listCallback.accept(0)
+        listCallback.acceptRepo(0,10)
     }
 
     override fun onBindView(root: View?, position: Int) {
         super.onBindView(root, position)
+        if (!getListOp().getList()?.get(position)!!.fork!!) {
+            root!!.setBackgroundColor(root.context.resources.getColor(R.color.light_green))
+        } else {
+            root!!.setBackgroundColor(root.context.resources.getColor(R.color.white))
+        }
+
         root?.setOnClickListener {
             listCallback.onItemSelected(getListOp().getList()?.get(position)!!)
         }
+
+        }
+
+
+
+
+
     }
-
-
-}

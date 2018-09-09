@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 
 class Task_CahcImp   @Inject constructor(val task:Task_Dao) : Task_ICach {
-    override fun getAllRepo(pageIndex: Int): Observable<List<Repo_Entity>> {
+    override fun getAllRepo(pageIndex: Int,num:Int): Observable<List<Repo_Entity>> {
         return throw Exception()
     }
 

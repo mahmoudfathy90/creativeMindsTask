@@ -14,7 +14,7 @@ class RepositryModule {
 
     // provide  Task_IRepository
     @Provides
-    fun providePatientRepositry(task_Repository: Task_Repository): Task_IRepository {
+    fun provideTaskRepositry(task_Repository: Task_Repository): Task_IRepository {
         return task_Repository
     }
 

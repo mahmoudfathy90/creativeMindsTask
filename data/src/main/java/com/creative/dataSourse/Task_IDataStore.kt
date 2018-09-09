@@ -5,10 +5,7 @@ import io.reactivex.Observable
 
 interface Task_IDataStore {
 
-
-
-
     // get all repo
-    fun getAllRepo(pageIndex: Int): Observable<List<Repo_Entity>>
+    fun getAllRepo(pageIndex: Int,num:Int): Observable<List<Repo_Entity>>
 
 }

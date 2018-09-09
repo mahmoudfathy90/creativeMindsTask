@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/tapbar_text_color"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_half">
+
+
+    <Button
+        android:id="@+id/repo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:background="@drawable/cancel_background"
+
+        android:padding="@dimen/margin_half"
+
+        android:text="go to repository `html_url"
+        android:textColor="@color/tapbar_color"
+        android:textSize="@dimen/_12ssp"
+        />
+    <Button
+        android:id="@+id/owner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:background="@drawable/cancel_background"
+
+        android:padding="@dimen/margin_half"
+        android:text=" owner `html_url`"
+        android:textColor="@color/tapbar_color"
+        android:textSize="@dimen/_12ssp"
+        />
+
+
+</LinearLayout>
+
+

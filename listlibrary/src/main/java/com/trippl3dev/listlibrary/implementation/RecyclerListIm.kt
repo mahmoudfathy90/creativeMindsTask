@@ -1,5 +1,6 @@
 package com.trippl3dev.listlibrary.implementation
 
+import android.content.Context
 import android.support.v4.view.ViewCompat
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.GridLayoutManager
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.LayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.util.Log
 import com.trippl3dev.listlibrary.interfaces.IListCallback
 import com.trippl3dev.listlibrary.interfaces.IListFeature
 import com.trippl3dev.listlibrary.interfaces.IListOp
@@ -71,12 +73,27 @@ class RecyclerListIm(private val holder: ListCallbackFunctionality, var operatio
 
     override fun setLayoutManager(layout: LayoutManager) {
         manager = layout
-        holder.getRecycler().layoutManager = manager
+                // holder.getRecycler().layoutManager = manager
+                 holder.getRecycler().layoutManager = LinearLayoutClass(holder.getRecycler().context)
+
     }
 
+    class LinearLayoutClass(context: Context) : LinearLayoutManager(context) {
+
+        //... constructor
+        override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State) {
+            try {
+                super.onLayoutChildren(recycler, state)
+            } catch (e: IndexOutOfBoundsException) {
+                Log.e("Error", "IndexOutOfBoundsException in RecyclerView happens")
+            }
+
+        }
+    }
     override fun getLayoutManager(): LayoutManager? {
         return manager ?: LinearLayoutManager(holder.getRecycler().context)
     }
+
 
     override fun setOnFlingListener(onFlingListener: RecyclerView.OnFlingListener?) {
         holder.getRecycler().onFlingListener = onFlingListener

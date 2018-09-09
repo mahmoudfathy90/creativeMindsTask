@@ -16,14 +16,14 @@ class ApplicationModule {
     @AppRemoteUrl
     @Provides
     fun serviceURl(): String {
-        return "http://mazbootapp.com/mazboot_api/"
+        return "https://api.github.com/users/square/"
     }
 
 
     @AppPreferenceName
     @Provides
     fun setPreferenceName(): String {
-        return "Mazboot"
+        return "task"
     }
 
 

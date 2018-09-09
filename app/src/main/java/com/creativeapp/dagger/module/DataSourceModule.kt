@@ -11,13 +11,13 @@ import dagger.Provides
 class DataSourceModule{
 
     @Provides
-    fun provideTaskICach(patient_Cach: Task_CahcImp):Task_ICach{
-        return  patient_Cach
+    fun provideTaskICach(task: Task_CahcImp):Task_ICach{
+        return  task
     }
 
     @Provides
-    fun provideTaskIremote(patient_RemoteImp: Task_RemoteImp):Task_IRemote{
-        return  patient_RemoteImp
+    fun provideTaskIremote(remote: Task_RemoteImp):Task_IRemote{
+        return  remote
     }
 
 

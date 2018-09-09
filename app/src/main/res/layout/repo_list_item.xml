@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <variable
             name="model"
             type="com.creativeapp.ui.repoTask.Repo_Model" />
@@ -18,45 +16,86 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_half"
+            android:padding="@dimen/margin_half"
+            android:text="الاسم :"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintHorizontal_bias=".0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/nameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_half"
+            android:padding="@dimen/margin_half"
             android:text="@{model.name}"
             android:textColor="@color/title_color"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/name"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="mahmoud fathy" />
 
 
         <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
+            android:id="@+id/desc"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_half"
+            android:padding="@dimen/margin_half"
+            android:text="الوصف :"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintHorizontal_bias=".0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameValue" />
+
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_half"
+            android:padding="@dimen/margin_half"
 
             android:text="@{model.description}"
             android:textColor="@color/title_color"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/desc"
             app:layout_constraintTop_toBottomOf="@+id/name"
             tools:text="mahmoud fathy" />
 
+
+        <TextView
+            android:id="@+id/owner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_half"
+            android:padding="@dimen/margin_half"
+            android:text="المالك :"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintHorizontal_bias=".0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <TextView
             android:id="@+id/ownerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_half"
-
-
+            android:padding="@dimen/margin_half"
+            android:text="@{model.owner.login}"
             android:textColor="@color/title_color"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/owner"
             app:layout_constraintTop_toBottomOf="@+id/description"
             tools:text="mahmoud fathy" />
 
@@ -66,9 +105,9 @@
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/margin_standard"
             android:background="@color/tapbar_text_color"
-            app:layout_constraintTop_toBottomOf="@+id/ownerName"
-app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerName"
 
             />
     </android.support.constraint.ConstraintLayout>

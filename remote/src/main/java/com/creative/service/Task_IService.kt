@@ -15,8 +15,7 @@ interface Task_IService {
 //    @POST("")
 //    fun addDrug(drug_EntryEntity: Drug_EntryEntity): Observable<Response<Drug_EntryEntity>>
 
-    @GET("https://api.github.com/users/square/repos")
-    fun getAllRepo(@Query("page") pageIndex: Int) :Observable<Response<List<Repo_Entity>>>
-
+    @GET("repos")
+    fun getAllRepo(@Query("page") pageIndex: Int,@Query("per_page") num:Int) :Observable<Response<List<Repo_Entity>>>
 
 }

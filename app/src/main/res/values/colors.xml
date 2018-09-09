@@ -10,5 +10,6 @@
     <color name="tapbar_color">#f1f2ec</color>
     <color name="tapbar_text_color">#c7c7c6</color>
     <color name="white">#fff</color>
+    <color name="light_green">#32CD32	</color>
 
 </resources>

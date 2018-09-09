@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 class Repo_Mapper @Inject constructor(var ownermapper: Owner_Mapper, var gson: Gson) : Mapper<Repo_Entity, Repo_Domain> {
     override fun mapFromEntity(type: Repo_Entity): Repo_Domain {
-        return Repo_Domain(type.name, type.description, type.html_url, ownermapper.mapListFromEntity(type.owner!!), type.fork)
+        return gson.fromJson(gson.toJson(type),Repo_Domain::class.java)
     }
 
     override fun mapToEntity(type: Repo_Domain): Repo_Entity {
-        return Repo_Entity(type.name, type.description, type.html_url, ownermapper.mapListToEntity(type.owner!!), type.fork)
+        return gson.fromJson(gson.toJson(type), Repo_Entity::class.java)
     }
 
     override fun mapListFromEntity(type: List<Repo_Entity>): List<Repo_Domain> {

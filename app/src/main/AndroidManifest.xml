@@ -19,10 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.base.activity.StartActivity" />
-        <activity android:name=".ui.designtask.MyListActivty">
-
-        </activity>
-        <activity android:name=".ui.repoTask.RepoActivity" />
+        <activity android:name=".ui.designtask.MyListActivty"></activity>
         <activity android:name=".ui.SplahActivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.repoTask.ReposityTaskActivty"></activity>
     </application>
 
 </manifest>
