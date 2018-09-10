@@ -28,8 +28,11 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
     }
     interface MyListCallBack : ListCallback {
         fun onItemSelected(t: Repo_Model)
-        fun getswipe(): SwipeRefreshLayout
         fun acceptRepo(page: Int, num: Int)
+    }
+
+    override fun hasSwiptoRefresh(): Boolean {
+        return true
     }
 
     override fun hasLoadMore(): Boolean = true
@@ -39,9 +42,8 @@ class Repo_ItemVM : FullListVM<Repo_Domain, Repo_Model, Repo_ItemVM.MyListCallBa
     }
     override fun fetchData() {
         super.fetchData()
-        listCallback.acceptRepo(0, 10)
-        listCallback.getswipe().isRefreshing = true
-
+        //listCallback.refresh()
+        listCallback.acceptRepo(currentPage, 10)
     }
 
 

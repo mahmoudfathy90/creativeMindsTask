@@ -109,8 +109,14 @@ class BaseAdapter<T>(holderInterface: IAdaptee<T>?, context: Context?) : Recycle
     }
 
     fun setState(state: Int) {
+        if(getCurrentGenerictList()?.size!! == 0)return
         this.state = state
-        notifyItemInserted(getCurrentGenerictList()?.size!!)
+
+        when(state){
+            States.NORMAL -> notifyItemRemoved(getCurrentGenerictList()?.size!!)
+            else -> notifyItemInserted(getCurrentGenerictList()?.size!!)
+        }
+
 //        notifyItemRangeInserted(getCurrentGenerictList()?.size!!-2,1)
 //        val list = ArrayList(getCurrentGenerictList())
 //        list.add( null)

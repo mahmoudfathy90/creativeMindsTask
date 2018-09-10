@@ -10,7 +10,7 @@ apply plugin: "org.jetbrains.kotlin.kapt"
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.mazbootapp"
+        applicationId "com.creativeapp"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

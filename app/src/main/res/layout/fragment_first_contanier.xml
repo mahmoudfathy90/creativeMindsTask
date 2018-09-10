@@ -8,13 +8,10 @@
     android:fitsSystemWindows="true"
     tools:context="com.creativeapp.ui.designtask.FirstContanierFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tabLayout"
-
         android:layout_marginTop="@dimen/margin_four"
         app:tabTextColor="@color/tapbar_text_color"
         app:tabSelectedTextColor="@color/cancel_color"
@@ -24,10 +21,9 @@
     </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/viewPager"
-        android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout"

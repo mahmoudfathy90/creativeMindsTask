@@ -23,6 +23,10 @@ interface IListVM<From,T, in V : IListCallback> {
         return false
     }
 
+    fun hasSwiptoRefresh():Boolean{
+        return false
+    }
+
 
     fun mapFrom(it: From): T
 

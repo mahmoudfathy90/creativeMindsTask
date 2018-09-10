@@ -23,21 +23,21 @@ class MyListActivty : BaseActivity() {
     }
 
     fun setGroupConatiner(){
-       replaceFramgment(FirstContanierFragment(),binding.fragmentContainer.id)
+        replaceFramgment(FirstContanierFragment.newInstance(1), binding.fragmentContainer.id)
         binding.groupContainer.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId) {
                 R.id.needs -> {
                     binding.needs.setBackgroundResource(R.drawable.radio_selected)
                     binding.others.setBackgroundColor(
                             resources.getColor(android.R.color.transparent))
-                    replaceFramgment(FirstContanierFragment(), binding.fragmentContainer.id)
+                    replaceFramgment(FirstContanierFragment.newInstance(1), binding.fragmentContainer.id)
                 }
                 R.id.others -> {
                     binding.others.setBackgroundResource(R.drawable.radio_selected)
                     binding.needs.setBackgroundColor(
                             resources.getColor(android.R.color.transparent))
 
-                    replaceFramgment(SecondContainerFragment(), binding.fragmentContainer.id)
+                    replaceFramgment(FirstContanierFragment.newInstance(2), binding.fragmentContainer.id)
                 }
             }
         }

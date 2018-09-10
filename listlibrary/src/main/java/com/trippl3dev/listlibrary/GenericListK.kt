@@ -24,11 +24,12 @@ import io.reactivex.schedulers.Schedulers
 
 import android.os.Parcelable
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.trippl3dev.listlibrary.implementation.VMFactory
 import com.trippl3dev.listlibrary.interfaces.IListCallback
 import android.view.ViewTreeObserver
-
-
+import com.trippl3dev.listlibrary.interfaces.States
+import kotlinx.android.synthetic.main.list_layout_view.*
 
 
 class GenericListK : Fragment(), RecyclerListIm.ListCallbackFunctionality {
@@ -90,18 +91,24 @@ class GenericListK : Fragment(), RecyclerListIm.ListCallbackFunctionality {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        recyclerView = RecyclerView(context)
-        recyclerView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        val view = inflater.inflate(R.layout.list_layout_view,container,false)
+        recyclerView = view.findViewById(R.id.list)
+
+//        recyclerView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         retainInstance = true
         if(savedInstanceState != null)
             listState = savedInstanceState.getParcelable(listStateKey)
-        return recyclerView
+        return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (savedInstanceState == null)
         getBundle()
         fullListVM = ViewModelProviders.of(this,VMFactory()).get<FullListVM<Any,Any,IListCallback>>(getVMClass(currentVMclassName)!!)
+        swipToRefresh.isEnabled = fullListVM?.hasSwiptoRefresh()!!
+        swipToRefresh.setOnRefreshListener {
+            resetVMData()
+        }
         lifecycle.addObserver(fullListVM!!)
 //        fullListVM?.setBundle(arguments?.getBundle(Bundle))
         prepareData()
@@ -134,23 +141,44 @@ class GenericListK : Fragment(), RecyclerListIm.ListCallbackFunctionality {
         fullListVM?.getLiveDataList()?.observe(this, Observer<ArrayList<Any>> { objects ->
             val oldList: ArrayList<Any> = ArrayList(fullListVM?.getAdaptee()?.getList())
             fullListVM?.getAdaptee()?.setList(ArrayList(objects))
-            disposable = Flowable.fromArray<ArrayList<Any>>(objects)
-                    .map<DiffUtil.DiffResult> { it -> DiffUtil.calculateDiff(GenericlistDiffUtils(oldList, it)) }
-                    .subscribeOn(Schedulers.computation())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { diffResult ->
-                        if (oldList.size <= 0) {
-                            if(fullListVM?.hasLoadMore()!! && !fullListVM?.isInNestedScroll()!!){
-                                recyclerView.clearOnScrollListeners()
-                                recyclerView.addOnScrollListener(fullListVM?.getScrollListener(recyclerView.layoutManager))
-                            }
+            val result = DiffUtil.calculateDiff(GenericlistDiffUtils(oldList, objects!!))
+            if (fullListVM?.currentPage == fullListVM?.setPageStartIndex()) {
+                if(fullListVM?.hasLoadMore()!! && !fullListVM?.isInNestedScroll()!!){
+                    recyclerView.clearOnScrollListeners()
+                    recyclerView.addOnScrollListener(fullListVM?.getScrollListener(recyclerView.layoutManager))
+                }
+                swipToRefresh.isRefreshing = false
+//                result.dispatchUpdatesTo(adapter)
                             adapter.notifyDataSetChanged()
-                        } else {
-                            recyclerView.recycledViewPool.clear()
+            } else {
+                recyclerView.recycledViewPool.clear()
 //                            adapter.notifyDataSetChanged()
-                            diffResult.dispatchUpdatesTo(adapter)
-                        }
-                    }
+                result.dispatchUpdatesTo(adapter)
+            }
+//            disposable = Flowable.fromArray<ArrayList<Any>>(objects)
+//                    .map<DiffUtil.DiffResult> { it ->
+//                            DiffUtil.calculateDiff(GenericlistDiffUtils(oldList, it))
+//                    }
+//                    .subscribeOn(Schedulers.computation())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .doOnError {
+//                        it.printStackTrace()
+//                    }
+//                    .subscribe { diffResult ->
+//                        if (fullListVM?.currentPage == fullListVM?.setPageStartIndex()) {
+//                            if(fullListVM?.hasLoadMore()!! && !fullListVM?.isInNestedScroll()!!){
+//                                recyclerView.clearOnScrollListeners()
+//                                recyclerView.addOnScrollListener(fullListVM?.getScrollListener(recyclerView.layoutManager))
+//                            }
+//                            swipToRefresh.isRefreshing = false
+//                            diffResult.dispatchUpdatesTo(adapter)
+////                            adapter.notifyDataSetChanged()
+//                        } else {
+//                            recyclerView.recycledViewPool.clear()
+////                            adapter.notifyDataSetChanged()
+//                            diffResult.dispatchUpdatesTo(adapter)
+//                        }
+//                    }
         })
         if (listState == null) {
             recyclerCallback?.value = RecyclerListIm(this, fullListVM?.getListOp()!!)

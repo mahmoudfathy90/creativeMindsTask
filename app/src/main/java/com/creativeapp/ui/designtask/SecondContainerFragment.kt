@@ -15,7 +15,7 @@ import com.creativeapp.databinding.FragmentFirstContanierBinding
 import com.creativeapp.databinding.FragmentSecondContanierBinding
 import com.creativeapp.ui.base.fragment.SBaseFragment
 
-class SecondContainerFragment : SBaseFragment() {
+class SecondContainerFragment : Fragment() {
 
 
     lateinit var adapter: ViewPagerAdapter

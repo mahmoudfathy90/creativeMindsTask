@@ -26,13 +26,9 @@ import kotlinx.android.synthetic.main.list_container.*
 
 class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
         Repo_ItemVM.MyListCallBack, IListListenerSetter {
-     lateinit var swipeRefreshLayout :SwipeRefreshLayout
 
-    override fun getswipe(): SwipeRefreshLayout {
-        var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
 
-        return swipeRefreshLayout
-    }
+
 
     override fun acceptRepo(page: Int, num: Int) {
         listRelay.accept(Pair(page, num))
@@ -49,8 +45,6 @@ class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
     override fun renderResult(baseVS: BaseVS) {
         when (baseVS) {
             is Repo_result -> {
-                swipeRefreshLayout.isRefreshing = false
-                swipeRefreshLayout.isEnabled = false
                 list = baseVS.repo
                 listHolder?.operation?.addList(baseVS.repo)
             }
@@ -120,15 +114,6 @@ class RepoFragment : FragmentList<Repo_Presenter, Repo_View>(), Repo_View,
         super.onCreate(savedInstanceState)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        swipeRefreshLayout= view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
-        swipeRefreshLayout.setOnRefreshListener {
-            swiprefresh.isEnabled=true
-            swiprefresh.isRefreshing=true
-        listRelay.accept(Pair(0, 10))
-        }
-    }
 
 
 

@@ -20,7 +20,6 @@ open abstract class BaseMVIActivity<V,P> : MviActivity<V, P>(), BaseFragment.IAc
     override fun createPresenter(): P{
         return BasePresenter() as P
     }
-
     var delgate : ActivityMVIDelegateImpl<V, P>? = null
     var injectorAll: InjectorAll = InjectorAll()
 
@@ -78,9 +77,9 @@ open abstract class BaseMVIActivity<V,P> : MviActivity<V, P>(), BaseFragment.IAc
     }
 
     fun replaceFramgment(fragment: Fragment, id:Int){
-        var theFragment = supportFragmentManager.findFragmentByTag(fragment::class.java.name)
+      //  var theFragment = supportFragmentManager.findFragmentByTag(fragment::class.java.name)
         //if (theFragment == null)
-            supportFragmentManager.beginTransaction().replace(id,fragment,fragment::class.java.name).commit()
+            supportFragmentManager.beginTransaction().replace(id,fragment).commit()
     }
     fun replaceFramgmentWithSave(fragment: Fragment, id:Int){
         var theFragment = supportFragmentManager.findFragmentByTag(fragment::class.java.name)

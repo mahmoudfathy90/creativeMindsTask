@@ -39,13 +39,9 @@ class MyList_Fragment : FragmentList<My_List_Presenter, MyList_View>(), MyList_V
 
         }
     }
-
     override fun renderResult(baseVS: BaseVS) {
         when (baseVS) {
             is List_result -> {
-                var swipeRefreshLayout = view!!.findViewById<SwipeRefreshLayout>(R.id.swiprefresh)
-                swipeRefreshLayout.isRefreshing = false
-                swipeRefreshLayout.isEnabled = false
                 var bundle: Bundle = this!!.arguments!!
                 var mylist: MutableList<List_Domain> = ArrayList<List_Domain>()
                 tabnumber = bundle.getInt("tabnumber",0)
@@ -95,6 +91,10 @@ class MyList_Fragment : FragmentList<My_List_Presenter, MyList_View>(), MyList_V
     }
 
     override fun onItemSelected(t: List_Model) {
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private var listListener: IListItemSelected<List_Model>? = null

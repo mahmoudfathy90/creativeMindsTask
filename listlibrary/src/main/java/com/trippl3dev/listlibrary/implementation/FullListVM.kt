@@ -79,7 +79,6 @@ abstract class FullListVM<FROM,T, V:IListCallback> : IListVM<FROM,T, V>, ViewMod
 
     }
 
-
     final override fun getSnapHelper(): GravityPagerSnapHelper {
         if (listSnap == null ){
             listSnap = GravityPagerSnapHelper(Gravity.START,true,
@@ -97,23 +96,18 @@ abstract class FullListVM<FROM,T, V:IListCallback> : IListVM<FROM,T, V>, ViewMod
         }
         return listSnap!!
     }
-
     override fun getLayoutManager(context: Context): RecyclerView.LayoutManager {
         return MyLinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
     }
-
-
     final override fun getListLayoutManager(context: Context): RecyclerView.LayoutManager? {
         if (layoutManager == null){
             layoutManager = getLayoutManager(context)
         }
         return layoutManager
     }
-
      override fun getLoadingViewID(): Int {
         return -1
     }
-
      override fun getErrorViewID(): Int {
         return -1
     }
@@ -125,7 +119,9 @@ abstract class FullListVM<FROM,T, V:IListCallback> : IListVM<FROM,T, V>, ViewMod
     }
    final fun resetData(){
        currentPage = setPageStartIndex()
+//       getAdaptee().setList(emptyList())
        operations.removeAll()
+       fetchData()
    }
 
     private var onStart:Boolean = true
